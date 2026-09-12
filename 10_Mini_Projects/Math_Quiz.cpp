@@ -69,7 +69,7 @@ int ReadNumber()
     while (cin.fail())
     {
         cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> Number;
     }
     return Number;
@@ -96,12 +96,6 @@ enDifficulty ChooseDifficulty(int Choice)
     }
     }
 }
-string DifficultyType(enDifficulty Difficulty)
-{
-    string Dif[4] = { "Easy" , "Med" , "Hard" , "MixDif" };
-    return Dif[Difficulty - 1];
-}
-
 void ScreenColor(bool Result)
 {
     switch (Result)
@@ -128,23 +122,23 @@ enOperatorType ChooseOperator(int Choice)
 {
     switch (Choice)
     {
-    case 1 :
+    case 1:
     {
-      return  enOperatorType::Add;
+        return  enOperatorType::Add;
     }
-    case 2 :
+    case 2:
     {
         return enOperatorType::Sub;
     }
-    case 3 :
+    case 3:
     {
         return enOperatorType::Mul;
     }
-    case 4 :
+    case 4:
     {
         return enOperatorType::Div;
     }
-    default :
+    default:
     {
         return enOperatorType::MixOp;
     }
@@ -154,23 +148,23 @@ string OperatorType(enOperatorType Operator)
 {
     switch (Operator)
     {
-    case enOperatorType :: Add:
+    case enOperatorType::Add:
     {
         return "+";
     }
-    case enOperatorType :: Sub :
+    case enOperatorType::Sub:
     {
         return "-";
     }
-    case enOperatorType :: Mul:
+    case enOperatorType::Mul:
     {
         return "*";
     }
-    case enOperatorType :: Div :
+    case enOperatorType::Div:
     {
         return "/";
     }
-    default :
+    default:
     {
         return "Mix";
     }
@@ -185,34 +179,34 @@ int SimpleCalcultor(int Number1, int Number2, enOperatorType Operator)
 {
     switch (Operator)
     {
-    case enOperatorType :: Add:
+    case enOperatorType::Add:
     {
         return Number1 + Number2;
     }
-    case enOperatorType :: Sub :
+    case enOperatorType::Sub:
     {
         return Number1 - Number2;
     }
-    case enOperatorType :: Mul :
+    case enOperatorType::Mul:
     {
         return Number1 * Number2;
     }
-    case enOperatorType :: Div :
+    case enOperatorType::Div:
     {
-       return  (Number2 != 0) ? (Number1 / Number2) : 0;
+        return  (Number2 != 0) ? (Number1 / Number2) : 0;
     }
-    default :
+    default:
     {
         return Number1 + Number2;
     }
     }
 }
-strQuestionElements GenerateQuestion(enOperatorType OpT , enDifficulty Difficulty)
+strQuestionElements GenerateQuestion(enOperatorType OpT, enDifficulty Difficulty)
 {
     strQuestionElements Question;
-    if(OpT == enOperatorType::MixOp)
+    if (OpT == enOperatorType::MixOp)
     {
-        OpT = enOperatorType(RandomNumber(1,4));
+        OpT = enOperatorType(RandomNumber(1, 4));
     }
     if (Difficulty == enDifficulty::MixDif)
     {
@@ -244,14 +238,14 @@ strQuestionElements GenerateQuestion(enOperatorType OpT , enDifficulty Difficult
     Question.CorrectAnswer = SimpleCalcultor(Question.Number1, Question.Number2, Question.OperationType);
     return Question;
 }
-void PrintTheQuestion(strQuestionElements Question, int QuestionNumber , int TotalQuestion)
+void PrintTheQuestion(strQuestionElements Question, int QuestionNumber, int TotalQuestion)
 {
     cout << "\nQuestion [" << QuestionNumber << "/" << TotalQuestion << "]\n";
     cout << Question.Number1 << "\n";
-    cout << Question.Number2 << " " <<  OperatorType(Question.OperationType) << "\n";;
+    cout << Question.Number2 << " " << OperatorType(Question.OperationType) << "\n";;
     cout << "------------------\n";
 }
-void CorrectTheQuestionAnswer(strQuestionElements &Question , int QuestionNumber , int TotalQuestions , strQuizElements &Quiz)
+void CorrectTheQuestionAnswer(strQuestionElements& Question, int QuestionNumber, int TotalQuestions, strQuizElements& Quiz)
 {
     PrintTheQuestion(Question, QuestionNumber, TotalQuestions);
     Question.PlayerAnswer = ReadNumber();
@@ -275,7 +269,7 @@ void PlayMathGame()
 {
     strQuizElements Quiz;
     Quiz.NumberOfQuestion = ReadPositiveNumber("How Many Question You Want To Play?\n");
-    Quiz.QuestionLevel = (enDifficulty)ReadNumberInRange("Enter Question Level [1]:Easy, [2]:Med , [3]:Hard , [4]:Mix ? \n",1,4);
+    Quiz.QuestionLevel = (enDifficulty)ReadNumberInRange("Enter Question Level [1]:Easy, [2]:Med , [3]:Hard , [4]:Mix ? \n", 1, 4);
     Quiz.OpT = (enOperatorType)ReadNumberInRange("Enter Operator Type [1]:Add, [2]:Sub , [3]:Mul , [4]:Div , [5]:Mix ? \n", 1, 5);
     for (int Questions = 1; Questions <= Quiz.NumberOfQuestion; Questions++)
     {
@@ -290,9 +284,8 @@ void PlayMathGame()
     cout << "Wrong Answers      : " << Quiz.NumberOfWrongAnswers << "\n";
     cout << "-----------------------------------\n";
 }
-int main()
+void PlayMathQuizGame()
 {
-    srand((unsigned)time(NULL));
     char PlayAgain = 'Y';
     do
     {
@@ -303,5 +296,10 @@ int main()
 
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
 
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    PlayMathQuizGame();
     return 0;
 }
