@@ -32,4 +32,4 @@ Fundamentals: variables, data types, operators, type conversion, and simple arit
 | 26 | Task Duration in Seconds | [`Task_Duration_in_Seconds.cpp`](./Task_Duration_in_Seconds.cpp) |
 | 27 | Task Duration in Seconds | [`Task_Duration_in_Seconds_1.1.cpp`](./Task_Duration_in_Seconds_1.1.cpp) |
 | 28 | Using Relational Operators | [`Using_Relational_Operators.cpp`](./Using_Relational_Operators.cpp) |
-| 29 | using cin ignor to dix the get line issue | [`using_cin_ignor_to_dix_the_get_line_issue.cpp`](./using_cin_ignor_to_dix_the_get_line_issue.cpp) |
+| 29 | using cin ignor to fix the get line issue | [`using_cin_ignor_to_dix_the_get_line_issue.cpp`](./using_cin_ignor_to_dix_the_get_line_issue.cpp) |
