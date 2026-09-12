@@ -1,0 +1,32 @@
+# Compiled binaries
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.so
+*.dll
+
+# Build directories
+build/
+bin/
+Debug/
+Release/
+x64/
+x86/
+
+# IDE / editor files
+.vs/
+.vscode/
+*.suo
+*.user
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
